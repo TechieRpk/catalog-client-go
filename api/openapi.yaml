@@ -1,0 +1,182 @@
+openapi: 3.0.1
+info:
+  title: javazone-catalog-api
+  version: "1.0"
+servers:
+- url: /
+paths:
+  /datasets:
+    get:
+      operationId: listDatasets
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/DatasetDTO"
+                type: array
+          description: listDatasets 200 response
+      tags:
+      - datasets
+    post:
+      operationId: createDataset
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DatasetDTO"
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DatasetDTO"
+          description: createDataset 201 response
+      security:
+      - bearerAuth: []
+      tags:
+      - datasets
+  /datasets/{id}:
+    delete:
+      operationId: deleteDataset
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "204":
+          description: deleteDataset 204 response
+      security:
+      - bearerAuth: []
+      tags:
+      - datasets
+    get:
+      operationId: getDataset
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DatasetDTO"
+          description: getDataset 200 response
+      tags:
+      - datasets
+    put:
+      operationId: updateDataset
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DatasetDTO"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DatasetDTO"
+          description: updateDataset 200 response
+      security:
+      - bearerAuth: []
+      tags:
+      - datasets
+components:
+  schemas:
+    DatasetDTO:
+      example:
+        id: 0
+        name: name
+        ownerTeam: ownerTeam
+        tags:
+        - tags
+        - tags
+        sensitivity: PUBLIC
+        schemaFields:
+        - name: name
+          type: type
+        - name: name
+          type: type
+        updatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        id:
+          format: int64
+          nullable: true
+          type: integer
+        name:
+          minLength: 1
+          type: string
+        ownerTeam:
+          minLength: 1
+          type: string
+        tags:
+          items:
+            type: string
+          type: array
+        sensitivity:
+          $ref: "#/components/schemas/DatasetSensitivity"
+        schemaFields:
+          items:
+            $ref: "#/components/schemas/FieldDTO"
+          type: array
+        updatedAt:
+          format: date-time
+          nullable: true
+          type: string
+      required:
+      - name
+      - ownerTeam
+      - schemaFields
+      - sensitivity
+      - tags
+      type: object
+    DatasetSensitivity:
+      enum:
+      - PUBLIC
+      - INTERNAL
+      - RESTRICTED
+      type: string
+    FieldDTO:
+      example:
+        name: name
+        type: type
+      properties:
+        name:
+          minLength: 1
+          type: string
+        type:
+          minLength: 1
+          type: string
+      required:
+      - name
+      - type
+      type: object
+  securitySchemes:
+    bearerAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http
