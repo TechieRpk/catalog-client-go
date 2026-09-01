@@ -1,4 +1,5 @@
 .gitignore
+.openapi-generator-ignore
 .travis.yml
 README.md
 api/openapi.yaml
@@ -16,4 +17,5 @@ model_dataset_dto.go
 model_dataset_sensitivity.go
 model_field_dto.go
 response.go
+test/api_datasets_test.go
 utils.go

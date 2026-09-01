@@ -27,6 +27,8 @@ type DatasetDTO struct {
 	OwnerTeam string `json:"ownerTeam"`
 	Tags []string `json:"tags"`
 	Sensitivity DatasetSensitivity `json:"sensitivity"`
+	RetentionDays int32 `json:"retentionDays"`
+	RefreshIntervalHours int32 `json:"refreshIntervalHours"`
 	SchemaFields []FieldDTO `json:"schemaFields"`
 	UpdatedAt NullableTime `json:"updatedAt,omitempty"`
 }
@@ -37,12 +39,14 @@ type _DatasetDTO DatasetDTO
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDatasetDTO(name string, ownerTeam string, tags []string, sensitivity DatasetSensitivity, schemaFields []FieldDTO) *DatasetDTO {
+func NewDatasetDTO(name string, ownerTeam string, tags []string, sensitivity DatasetSensitivity, retentionDays int32, refreshIntervalHours int32, schemaFields []FieldDTO) *DatasetDTO {
 	this := DatasetDTO{}
 	this.Name = name
 	this.OwnerTeam = ownerTeam
 	this.Tags = tags
 	this.Sensitivity = sensitivity
+	this.RetentionDays = retentionDays
+	this.RefreshIntervalHours = refreshIntervalHours
 	this.SchemaFields = schemaFields
 	return &this
 }
@@ -193,6 +197,54 @@ func (o *DatasetDTO) SetSensitivity(v DatasetSensitivity) {
 	o.Sensitivity = v
 }
 
+// GetRetentionDays returns the RetentionDays field value
+func (o *DatasetDTO) GetRetentionDays() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.RetentionDays
+}
+
+// GetRetentionDaysOk returns a tuple with the RetentionDays field value
+// and a boolean to check if the value has been set.
+func (o *DatasetDTO) GetRetentionDaysOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.RetentionDays, true
+}
+
+// SetRetentionDays sets field value
+func (o *DatasetDTO) SetRetentionDays(v int32) {
+	o.RetentionDays = v
+}
+
+// GetRefreshIntervalHours returns the RefreshIntervalHours field value
+func (o *DatasetDTO) GetRefreshIntervalHours() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.RefreshIntervalHours
+}
+
+// GetRefreshIntervalHoursOk returns a tuple with the RefreshIntervalHours field value
+// and a boolean to check if the value has been set.
+func (o *DatasetDTO) GetRefreshIntervalHoursOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.RefreshIntervalHours, true
+}
+
+// SetRefreshIntervalHours sets field value
+func (o *DatasetDTO) SetRefreshIntervalHours(v int32) {
+	o.RefreshIntervalHours = v
+}
+
 // GetSchemaFields returns the SchemaFields field value
 func (o *DatasetDTO) GetSchemaFields() []FieldDTO {
 	if o == nil {
@@ -276,6 +328,8 @@ func (o DatasetDTO) ToMap() (map[string]interface{}, error) {
 	toSerialize["ownerTeam"] = o.OwnerTeam
 	toSerialize["tags"] = o.Tags
 	toSerialize["sensitivity"] = o.Sensitivity
+	toSerialize["retentionDays"] = o.RetentionDays
+	toSerialize["refreshIntervalHours"] = o.RefreshIntervalHours
 	toSerialize["schemaFields"] = o.SchemaFields
 	if o.UpdatedAt.IsSet() {
 		toSerialize["updatedAt"] = o.UpdatedAt.Get()
@@ -292,6 +346,8 @@ func (o *DatasetDTO) UnmarshalJSON(data []byte) (err error) {
 		"ownerTeam",
 		"tags",
 		"sensitivity",
+		"retentionDays",
+		"refreshIntervalHours",
 		"schemaFields",
 	}
 

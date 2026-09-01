@@ -31,7 +31,7 @@ import (
 )
 
 func main() {
-	datasetDTO := *openapiclient.NewDatasetDTO("Name_example", "OwnerTeam_example", []string{"Tags_example"}, openapiclient.DatasetSensitivity("PUBLIC"), []openapiclient.FieldDTO{*openapiclient.NewFieldDTO("Name_example", "Type_example")}) // DatasetDTO | 
+	datasetDTO := *openapiclient.NewDatasetDTO("Name_example", "OwnerTeam_example", []string{"Tags_example"}, openapiclient.DatasetSensitivity("PUBLIC"), int32(123), int32(123), []openapiclient.FieldDTO{*openapiclient.NewFieldDTO("Name_example", "Type_example")}) // DatasetDTO | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -289,7 +289,7 @@ import (
 
 func main() {
 	id := int64(789) // int64 | 
-	datasetDTO := *openapiclient.NewDatasetDTO("Name_example", "OwnerTeam_example", []string{"Tags_example"}, openapiclient.DatasetSensitivity("PUBLIC"), []openapiclient.FieldDTO{*openapiclient.NewFieldDTO("Name_example", "Type_example")}) // DatasetDTO | 
+	datasetDTO := *openapiclient.NewDatasetDTO("Name_example", "OwnerTeam_example", []string{"Tags_example"}, openapiclient.DatasetSensitivity("PUBLIC"), int32(123), int32(123), []openapiclient.FieldDTO{*openapiclient.NewFieldDTO("Name_example", "Type_example")}) // DatasetDTO | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
