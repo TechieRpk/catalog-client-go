@@ -116,6 +116,8 @@ components:
         - tags
         - tags
         sensitivity: PUBLIC
+        retentionDays: 6
+        refreshIntervalHours: 1
         schemaFields:
         - name: name
           type: type
@@ -139,6 +141,12 @@ components:
           type: array
         sensitivity:
           $ref: "#/components/schemas/DatasetSensitivity"
+        retentionDays:
+          format: int32
+          type: integer
+        refreshIntervalHours:
+          format: int32
+          type: integer
         schemaFields:
           items:
             $ref: "#/components/schemas/FieldDTO"
@@ -150,6 +158,8 @@ components:
       required:
       - name
       - ownerTeam
+      - refreshIntervalHours
+      - retentionDays
       - schemaFields
       - sensitivity
       - tags
