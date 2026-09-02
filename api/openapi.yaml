@@ -111,11 +111,14 @@ components:
       example:
         id: 0
         name: name
-        ownerTeam: ownerTeam
+        owningTeam: owningTeam
+        sourceSystem: sourceSystem
         tags:
         - tags
         - tags
         sensitivity: PUBLIC
+        retentionDays: 6
+        refreshIntervalHours: 1
         schemaFields:
         - name: name
           type: type
@@ -130,7 +133,10 @@ components:
         name:
           minLength: 1
           type: string
-        ownerTeam:
+        owningTeam:
+          minLength: 1
+          type: string
+        sourceSystem:
           minLength: 1
           type: string
         tags:
@@ -139,6 +145,12 @@ components:
           type: array
         sensitivity:
           $ref: "#/components/schemas/DatasetSensitivity"
+        retentionDays:
+          format: int32
+          type: integer
+        refreshIntervalHours:
+          format: int32
+          type: integer
         schemaFields:
           items:
             $ref: "#/components/schemas/FieldDTO"
@@ -149,9 +161,12 @@ components:
           type: string
       required:
       - name
-      - ownerTeam
+      - owningTeam
+      - refreshIntervalHours
+      - retentionDays
       - schemaFields
       - sensitivity
+      - sourceSystem
       - tags
       type: object
     DatasetSensitivity:

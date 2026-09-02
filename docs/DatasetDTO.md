@@ -6,9 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **NullableInt64** |  | [optional] 
 **Name** | **string** |  | 
-**OwnerTeam** | **string** |  | 
+**OwningTeam** | **string** |  | 
+**SourceSystem** | **string** |  | 
 **Tags** | **[]string** |  | 
 **Sensitivity** | [**DatasetSensitivity**](DatasetSensitivity.md) |  | 
+**RetentionDays** | **int32** |  | 
+**RefreshIntervalHours** | **int32** |  | 
 **SchemaFields** | [**[]FieldDTO**](FieldDTO.md) |  | 
 **UpdatedAt** | Pointer to **NullableTime** |  | [optional] 
 
@@ -16,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewDatasetDTO
 
-`func NewDatasetDTO(name string, ownerTeam string, tags []string, sensitivity DatasetSensitivity, schemaFields []FieldDTO, ) *DatasetDTO`
+`func NewDatasetDTO(name string, owningTeam string, sourceSystem string, tags []string, sensitivity DatasetSensitivity, retentionDays int32, refreshIntervalHours int32, schemaFields []FieldDTO, ) *DatasetDTO`
 
 NewDatasetDTO instantiates a new DatasetDTO object
 This constructor will assign default values to properties that have it defined,
@@ -86,24 +89,44 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
-### GetOwnerTeam
+### GetOwningTeam
 
-`func (o *DatasetDTO) GetOwnerTeam() string`
+`func (o *DatasetDTO) GetOwningTeam() string`
 
-GetOwnerTeam returns the OwnerTeam field if non-nil, zero value otherwise.
+GetOwningTeam returns the OwningTeam field if non-nil, zero value otherwise.
 
-### GetOwnerTeamOk
+### GetOwningTeamOk
 
-`func (o *DatasetDTO) GetOwnerTeamOk() (*string, bool)`
+`func (o *DatasetDTO) GetOwningTeamOk() (*string, bool)`
 
-GetOwnerTeamOk returns a tuple with the OwnerTeam field if it's non-nil, zero value otherwise
+GetOwningTeamOk returns a tuple with the OwningTeam field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetOwnerTeam
+### SetOwningTeam
 
-`func (o *DatasetDTO) SetOwnerTeam(v string)`
+`func (o *DatasetDTO) SetOwningTeam(v string)`
 
-SetOwnerTeam sets OwnerTeam field to given value.
+SetOwningTeam sets OwningTeam field to given value.
+
+
+### GetSourceSystem
+
+`func (o *DatasetDTO) GetSourceSystem() string`
+
+GetSourceSystem returns the SourceSystem field if non-nil, zero value otherwise.
+
+### GetSourceSystemOk
+
+`func (o *DatasetDTO) GetSourceSystemOk() (*string, bool)`
+
+GetSourceSystemOk returns a tuple with the SourceSystem field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSourceSystem
+
+`func (o *DatasetDTO) SetSourceSystem(v string)`
+
+SetSourceSystem sets SourceSystem field to given value.
 
 
 ### GetTags
@@ -144,6 +167,46 @@ and a boolean to check if the value has been set.
 `func (o *DatasetDTO) SetSensitivity(v DatasetSensitivity)`
 
 SetSensitivity sets Sensitivity field to given value.
+
+
+### GetRetentionDays
+
+`func (o *DatasetDTO) GetRetentionDays() int32`
+
+GetRetentionDays returns the RetentionDays field if non-nil, zero value otherwise.
+
+### GetRetentionDaysOk
+
+`func (o *DatasetDTO) GetRetentionDaysOk() (*int32, bool)`
+
+GetRetentionDaysOk returns a tuple with the RetentionDays field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRetentionDays
+
+`func (o *DatasetDTO) SetRetentionDays(v int32)`
+
+SetRetentionDays sets RetentionDays field to given value.
+
+
+### GetRefreshIntervalHours
+
+`func (o *DatasetDTO) GetRefreshIntervalHours() int32`
+
+GetRefreshIntervalHours returns the RefreshIntervalHours field if non-nil, zero value otherwise.
+
+### GetRefreshIntervalHoursOk
+
+`func (o *DatasetDTO) GetRefreshIntervalHoursOk() (*int32, bool)`
+
+GetRefreshIntervalHoursOk returns a tuple with the RefreshIntervalHours field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRefreshIntervalHours
+
+`func (o *DatasetDTO) SetRefreshIntervalHours(v int32)`
+
+SetRefreshIntervalHours sets RefreshIntervalHours field to given value.
 
 
 ### GetSchemaFields
